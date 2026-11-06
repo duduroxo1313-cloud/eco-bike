@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>EcoBike SP – Aluguel de bicicletas em São Paulo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <symbol id="bike" viewBox="0 0 240 130">
+        <g
+          fill="none"
+          stroke="currentColor"
+          stroke-width="5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="50" cy="88" r="30" />
+          <circle cx="190" cy="88" r="30" />
+          <path d="M50 88 L95 88 L125 44 L170 44 L190 88" />
+          <path d="M95 88 L108 44 M100 44 H122" />
+          <path d="M170 44 L162 30 H178" />
+        </g>
+      </symbol>
+    </svg>
+
+    <header>
+      <div class="container header-inner">
+        <a class="logo" href="#inicio">Eco<span>Bike</span> SP</a>
+        <nav aria-label="Navegação principal">
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#planos">Planos</a></li>
+            <li><a href="#simulador">Simulador</a></li>
+            <li><a href="#reservas">Reservas</a></li>
+          </ul>
+        </nav>
+        <button
+          class="theme-btn"
+          id="tema"
+          type="button"
+          aria-label="Alternar entre modo claro e escuro"
+        >
+          Modo escuro
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Mobilidade urbana em São Paulo</p>
+            <h1>Pedale pela cidade sem se preocupar com o trânsito</h1>
+            <p>
+              A EcoBike SP aluga bicicletas urbanas, elétricas e cargo por hora,
+              em estações espalhadas por São Paulo. Retire em uma estação,
+              pedale e devolva onde for mais conveniente.
+            </p>
+            <a class="btn" href="#planos">Ver planos</a>
+          </div>
+          <div class="hero-img">
+            <svg
+              class="bike"
+              role="img"
+              aria-label="Ilustração de uma bicicleta urbana"
+            >
+              <use href="#bike" />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section id="planos">
+        <div class="container">
+          <h2 class="section-title">Planos de bicicletas</h2>
+          <p class="section-sub">
+            Escolha o modelo de acordo com o seu trajeto. O valor é cobrado por
+            hora de uso.
+          </p>
+          <div class="cards">
+            <article class="card">
+              <figure>
+                <img src="img/bicicleta_urbana_groove_cosmopolitan_7v_2021_1135_1_18513a5218409939a6de344fbabed132-removebg-preview.png" alt="Bicicleta urbana" />
+                  <use href="#bike" />
+                </img>
+              </figure>
+              <div class="card-body">
+                <h3>Urbana</h3>
+                <p>Ideal para passeios pela cidade.</p>
+                <span class="price">R$ 12 <small>por hora</small></span>
+              </div>
+            </article>
+            <article class="card">
+              <figure>
+                <img src="img/bicicleta_eltrica_1000w_gt20_pro_48v_15ah_at_50km_1_20260904142802_ae6f1b2214e4-removebg-preview.png" alt="Bicicleta elétrica" />
+                  <use href="#bike" />
+                </img>
+              </figure>
+              <div class="card-body">
+                <h3>Elétrica</h3>
+                <p>Mais conforto e facilidade nos trajetos.</p>
+                <span class="price">R$ 20 <small>por hora</small></span>
+              </div>
+            </article>
+            <article class="card">
+              <figure>
+                <img src="img/bike-cargo-removebg-preview.png" alt="Bicicleta cargo" />
+                  <use href="#bike" />
+                </img>
+              </figure>
+              <div class="card-body">
+                <h3>Cargo</h3>
+                <p>Ideal para transportar objetos.</p>
+                <span class="price">R$ 25 <small>por hora</small></span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="simulador">
+        <div class="container">
+          <h2 class="section-title">Simulador de preço</h2>
+          <p class="section-sub">
+            Aluguéis acima de 5 horas têm 10% de desconto sobre o valor total.
+          </p>
+          <div class="two-col">
+            <div class="panel">
+              <h3>Calcule seu aluguel</h3>
+              <div class="field">
+                <label for="tipo">Tipo de bicicleta</label>
+                <select id="tipo">
+                  <option value="12">Urbana</option>
+                  <option value="20">Elétrica</option>
+                  <option value="25">Cargo</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="horas">Quantidade de horas</label>
+                <input type="number" id="horas" min="1" step="1" value="1" />
+              </div>
+              <button class="btn" id="calcular" type="button">Calcular</button>
+              <p class="error" id="erro-horas" role="alert"></p>
+              <div class="result" id="resultado" aria-live="polite">
+                <p class="detail">O valor total aparecerá aqui.</p>
+              </div>
+            </div>
+            <div class="panel">
+              <h3>Tabela de preços</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Modelo</th>
+                    <th>Valor por hora</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Urbana</td>
+                    <td>R$ 12/h</td>
+                  </tr>
+                  <tr>
+                    <td>Elétrica</td>
+                    <td>R$ 20/h</td>
+                  </tr>
+                  <tr>
+                    <td>Cargo</td>
+                    <td>R$ 25/h</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="note">
+                Até 5 horas: preço normal. Acima de 5 horas: desconto de 10%.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="reservas">
+        <div class="container">
+          <h2 class="section-title">Pré-reservas</h2>
+          <p class="section-sub">
+            Informe o nome do cliente para registrar uma pré-reserva.
+          </p>
+          <div class="panel" style="max-width: 640px">
+            <div class="add-row">
+              <div class="field">
+                <label for="nome">Nome do cliente</label>
+                <input
+                  type="text"
+                  id="nome"
+                  placeholder="Ex.: Maria Souza"
+                  autocomplete="off"
+                />
+              </div>
+              <button class="btn" id="adicionar" type="button">
+                Adicionar
+              </button>
+            </div>
+            <p class="error" id="erro-nome" role="alert"></p>
+            <ul id="lista"></ul>
+            <p class="total" id="total">Total de reservas: 0</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <h3>EcoBike SP</h3>
+            <p>
+              Aluguel de bicicletas urbanas, elétricas e cargo por hora, com
+              estações em São Paulo.
+            </p>
+          </div>
+          <div>
+            <h3>Contato</h3>
+            <p>
+              <a href="mailto:contato@ecobikesp.com.br"
+                >contato@ecobikesp.com.br</a
+              >
+            </p>
+          </div>
+        </div>
+        <p class="copy">© 2026 EcoBike SP. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
